@@ -9,6 +9,7 @@ public class Transaction {
     private String vendor;
     private double amount;
 
+    /*-----Constructor-----*/
     public Transaction(String date, String time, String description, String vendor, double amount) {
         this.date = date;
         this.time = time;
@@ -17,6 +18,7 @@ public class Transaction {
         this.amount = amount;
     }
 
+    /*-----toString-----*/
     @Override
     public String toString() {
         return "Transaction{" +
@@ -27,6 +29,8 @@ public class Transaction {
                 ", amount=" + amount +
                 '}';
     }
+
+    /*-----Getters & Setters-----*/
 
     public String getDate() {
         return date;

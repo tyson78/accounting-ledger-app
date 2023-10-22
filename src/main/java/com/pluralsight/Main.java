@@ -22,7 +22,7 @@ public class Main {
                     + "L) Ledger\n"
                     + "X) Exit\n"
             );
-            String input = scanner.nextLine();
+            String input = scanner.nextLine().trim();
 
             switch (input) {
                 case "D", "d":
@@ -32,7 +32,7 @@ public class Main {
                     makePayment();
                     break;
                 case "L", "l":
-                    displayLedgerScreen();
+                    promptLedgerScreen();
                     break;
                 case "X", "x", "E", "e":
                     System.out.println("Thank you for using the app!");
@@ -65,10 +65,10 @@ public class Main {
     private static void makePayment() {
 
         System.out.println("Write a description for this payment\n");
-        String paymentDescription = scanner.nextLine();
+        String paymentDescription = scanner.nextLine().trim();
 
         System.out.println("Who would you like to make payment to?\n");
-        String paymentVendor = scanner.nextLine();
+        String paymentVendor = scanner.nextLine().trim();
 
         System.out.println("How much would you like to make payment?\n");
         Double paymentAmount = scanner.nextDouble();
@@ -101,10 +101,8 @@ public class Main {
         }
     }
 
-    private static void displayLedgerScreen() {
-        // Ledger ledger = new Ledger();
-        // ledger.displayAllEntries();
-
+    private static void promptLedgerScreen() {
+        Ledger ledger = new Ledger();
+        ledger.displayLedgerScreen();
     }
-
 }
