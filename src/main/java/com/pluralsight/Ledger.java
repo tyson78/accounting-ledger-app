@@ -3,6 +3,8 @@ package com.pluralsight;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Ledger {
@@ -72,14 +74,22 @@ public class Ledger {
                 // var tAmount = Double.parseDouble(fields[4]);
 
                 Transaction t = new Transaction(tDate, tTime, tDescription, tVendor, tAmount);
-                System.out.printf(
-                        "\ntDate: %s, \ntTime: %s, \ntDescription: %s, \ntVendor: %s, \ntAmount: %.2f \n",
-                        t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount()
-                );
+//                System.out.printf(
+//                        "\ntDate: %s, \ntTime: %s, \ntDescription: %s, \ntVendor: %s, \ntAmount: %.2f \n",
+//                        t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount()
+//                );
 
-                // allTransactions.add(t);
+                allTransactions.add(t);
             }
-            // System.out.println(allTransactions);
+
+            Collections.reverse(allTransactions); // reverses a list
+
+            for (Transaction allTran : allTransactions) {
+                System.out.println("\nDate: " + allTran.getDate() + "\nTime: "
+                        + allTran.getTime() + "\nDescription: " + allTran.getDescription()
+                        + "\nVendor: " + allTran.getVendor() + "\nAmount: " + allTran.getAmount()
+                );
+            }
             System.out.println(); // to make a line space
             bufferedReader.close();
         } catch (Exception e) {
