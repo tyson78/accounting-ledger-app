@@ -61,17 +61,13 @@ public class Main {
         Transaction t = new Transaction(date, time, description, vendor, amount);
 
         try {
-            FileWriter fileWriter = new FileWriter("trans.csv");
+            FileWriter fileWriter = new FileWriter("trans.csv", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             String output;
             output = String.format("%s|%s|%s|%s|%.2f\n", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
-            bufferedWriter.append(output);
+            bufferedWriter.append(output + "\n");
             bufferedWriter.close();
 
-            // read transactions.csv until it reaches null line
-            // write the new Transaction
-            // $ 200
-            // csv: 2023-10-21|11:15:00|Deposited|BankAccount|200.00
         } catch (Exception e) {
             e.printStackTrace();
         }
