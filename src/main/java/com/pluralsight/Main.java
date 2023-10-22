@@ -32,7 +32,7 @@ public class Main {
                     makePayment();
                     break;
                 case "L", "l":
-                    displayLedger();
+                    displayLedgerScreen();
                     break;
                 case "X", "x", "E", "e":
                     System.out.println("Thank you for using the app!");
@@ -59,17 +59,7 @@ public class Main {
         var amount = depositAmount;
 
         Transaction t = new Transaction(date, time, description, vendor, amount);
-
-        try {
-            FileWriter fileWriter = new FileWriter("trans.csv", true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            String output;
-            output = String.format("%s|%s|%s|%s|%.2f", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
-            bufferedWriter.write("\n" + output);
-            bufferedWriter.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        writeToCsv(t);
     }
 
     private static void makePayment() {
@@ -94,7 +84,10 @@ public class Main {
         var amount = paymentAmount;
 
         Transaction t = new Transaction(date, time, description, vendor, amount);
+        writeToCsv(t);
+    }
 
+    private static void writeToCsv(Transaction t) {
         try {
             FileWriter fileWriter = new FileWriter("trans.csv", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -108,7 +101,10 @@ public class Main {
         }
     }
 
-    private static void displayLedger() {
+    private static void displayLedgerScreen() {
+        // Ledger ledger = new Ledger();
+        // ledger.displayAllEntries();
+
     }
 
 }
