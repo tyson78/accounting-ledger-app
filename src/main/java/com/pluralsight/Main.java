@@ -74,6 +74,39 @@ public class Main {
     }
 
     private static void makePayment() {
+
+        System.out.println("Write a description for this payment\n");
+        String paymentDescription = scanner.nextLine();
+
+        System.out.println("Who would you like to make payment to?\n");
+        String paymentVendor = scanner.nextLine();
+
+        System.out.println("How much would you like to make payment?\n");
+        Double paymentAmount = scanner.nextDouble();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        var date = LocalDateTime.now().format(formatter);
+
+        formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+        var time = LocalDateTime.now().format(formatter);
+
+        var description = paymentDescription;
+        var vendor = paymentVendor;
+        var amount = paymentAmount;
+
+        Transaction t = new Transaction(date, time, description, vendor, amount);
+
+        try {
+            FileWriter fileWriter = new FileWriter("trans.csv", true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            String output;
+            output = String.format("\n%s|%s|%s|%s|%.2f", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+            bufferedWriter.append(output);
+            bufferedWriter.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static void displayLedger() {
