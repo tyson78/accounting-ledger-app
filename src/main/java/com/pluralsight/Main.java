@@ -9,8 +9,11 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        System.out.println("Hello User!");
+        displayHomeScreen();
+    }
 
+    public static void displayHomeScreen() {
         boolean done = false;
         while (!done) {
             System.out.println("Select the Transaction type you want to perform by typing one of the letters below: \n"
@@ -23,23 +26,20 @@ public class Main {
 
             switch (input) {
                 case "D", "d":
-                    System.out.println("D");
                     addDeposit();
                     break;
                 case "P", "p":
-                    System.out.println("P");
                     makePayment();
                     break;
                 case "L", "l":
-                    System.out.println("L");
                     displayLedger();
                     break;
                 case "X", "x", "E", "e":
-                    System.out.println("X");
+                    System.out.println("Thank you for using the app!");
                     done = true;
                     break;
                 default:
-                    System.out.println("Please select again: \n");
+                    System.out.println("Invalid input. Please select again.\n");
             }
         }
     }
@@ -64,10 +64,9 @@ public class Main {
             FileWriter fileWriter = new FileWriter("trans.csv", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             String output;
-            output = String.format("%s|%s|%s|%s|%.2f\n", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
-            bufferedWriter.append(output + "\n");
+            output = String.format("%s|%s|%s|%s|%.2f", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+            bufferedWriter.write("\n" + output);
             bufferedWriter.close();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -100,8 +99,8 @@ public class Main {
             FileWriter fileWriter = new FileWriter("trans.csv", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             String output;
-            output = String.format("\n%s|%s|%s|%s|%.2f", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
-            bufferedWriter.append(output);
+            output = String.format("%s|%s|%s|%s|%.2f", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+            bufferedWriter.append("\n" + output);
             bufferedWriter.close();
 
         } catch (Exception e) {
