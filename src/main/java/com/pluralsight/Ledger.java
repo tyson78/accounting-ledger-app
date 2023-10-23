@@ -4,11 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Ledger {
-
-    // static ArrayList<Transaction> allTransactions = new ArrayList<>();
 
     public void displayLedgerScreen () {
         Scanner scanner = new Scanner(System.in);
@@ -61,7 +60,6 @@ public class Ledger {
         }
     }
 
-    // BUG! - display deposits twice after displaying payments.
     private void displayDeposits() {
         System.out.println("Displaying only the deposits - newest first");
         ArrayList<Transaction> allTran2 = readFromCsv();
@@ -78,7 +76,20 @@ public class Ledger {
     }
 
     private void displayPayments() {
-        System.out.println("display Payments");
+        System.out.println("displaying Payments - newest first");
+        ArrayList<Transaction> allTran3 = readFromCsv();
+        String s = "paid".toLowerCase(Locale.ROOT);
+
+        for (Transaction eachTran3 : allTran3) {
+            //if (eachTran3.getDescription().equalsIgnoreCase("paid")) {
+            if (eachTran3.getDescription().contains("paid".toLowerCase())) {
+                // System.out.println("Testing displayPayments()");
+                System.out.println("\nDate: " + eachTran3.getDate() + "\nTime: "
+                        + eachTran3.getTime() + "\nDescription: " + eachTran3.getDescription()
+                        + "\nVendor: " + eachTran3.getVendor() + "\nAmount: " + eachTran3.getAmount()
+                );
+            }
+        }
     }
 
     private void displayReports() {
