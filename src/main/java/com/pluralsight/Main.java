@@ -89,7 +89,7 @@ public class Main {
 
     private static void writeToCsv(Transaction t) {
         try {
-            FileWriter fileWriter = new FileWriter("trans.csv", true);
+            FileWriter fileWriter = new FileWriter("transactions.csv", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             String output;
             output = String.format("%s|%s|%s|%s|%.2f", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());

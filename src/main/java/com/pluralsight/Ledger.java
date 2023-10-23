@@ -16,7 +16,7 @@ public class Ledger {
 
         boolean done = false;
         while (!done) {
-            System.out.println("Select the operation type you want to perform by typing one of the letters below: \n"
+            System.out.println("\nSelect the operation type you want to perform by typing one of the letters below: \n"
                     + "A) All\n"
                     + "D) Deposits\n"
                     + "P) Payments\n"
@@ -50,10 +50,42 @@ public class Ledger {
     }
 
     private void displayAllEntries() {
-        System.out.println("display All Entries");
+        System.out.println("Displaying all the entries - newest first");
+        readFromCsv();
+        for (Transaction allTran1 : allTransactions) {
+            System.out.println("\nDate: " + allTran1.getDate() + "\nTime: "
+                    + allTran1.getTime() + "\nDescription: " + allTran1.getDescription()
+                    + "\nVendor: " + allTran1.getVendor() + "\nAmount: " + allTran1.getAmount()
+            );
+        }
+    }
 
+    // BUG! - display deposits twice after displaying payments.
+    private void displayDeposits() {
+        System.out.println("Displaying only the deposits - newest first");
+        readFromCsv();
+        for (Transaction allTran2 : allTransactions) {
+            if (allTran2.getDescription().equalsIgnoreCase("Deposit")) {
+                System.out.println("Testing1");
+//                System.out.println("\nDate: " + allTran.getDate() + "\nTime: "
+//                        + allTran.getTime() + "\nDescription: " + allTran.getDescription()
+//                        + "\nVendor: " + allTran.getVendor() + "\nAmount: " + allTran.getAmount()
+//                );
+            }
+        }
+    }
+
+    private void displayPayments() {
+        System.out.println("display Payments");
+    }
+
+    private void displayReports() {
+        System.out.println("display Reports");
+    }
+
+    private void readFromCsv() {
         try {
-            FileReader fileReader = new FileReader("trans.csv");
+            FileReader fileReader = new FileReader("transactions.csv");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String input;
 
@@ -64,49 +96,22 @@ public class Ledger {
 
             while ((input = bufferedReader.readLine()) != null) {
                 String[] fields = (input.toString()).split("\\|");
-                // String = {"date", "time", "description", "vendor", "amount"};
+                // each String is {"date", "time", "description", "vendor", "amount"};
 
                 var tDate = fields[0].trim();
                 var tTime = fields[1].trim();
                 var tDescription = fields[2].trim();
                 var tVendor = fields[3].trim();
                 var tAmount = Double.valueOf(fields[4]);
-                // var tAmount = Double.parseDouble(fields[4]);
 
                 Transaction t = new Transaction(tDate, tTime, tDescription, tVendor, tAmount);
-//                System.out.printf(
-//                        "\ntDate: %s, \ntTime: %s, \ntDescription: %s, \ntVendor: %s, \ntAmount: %.2f \n",
-//                        t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount()
-//                );
-
                 allTransactions.add(t);
             }
-
             Collections.reverse(allTransactions); // reverses a list
-
-            for (Transaction allTran : allTransactions) {
-                System.out.println("\nDate: " + allTran.getDate() + "\nTime: "
-                        + allTran.getTime() + "\nDescription: " + allTran.getDescription()
-                        + "\nVendor: " + allTran.getVendor() + "\nAmount: " + allTran.getAmount()
-                );
-            }
             System.out.println(); // to make a line space
             bufferedReader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-    }
-
-    private void displayDeposits() {
-        System.out.println("display Deposits");
-    }
-
-    private void displayPayments() {
-        System.out.println("display Payments");
-    }
-
-    private void displayReports() {
-        System.out.println("display Reports");
     }
 }
