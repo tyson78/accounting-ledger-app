@@ -4,12 +4,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class Ledger {
 
-    ArrayList<Transaction> allTransactions = new ArrayList<>();
+    // static ArrayList<Transaction> allTransactions = new ArrayList<>();
 
     public void displayLedgerScreen () {
         Scanner scanner = new Scanner(System.in);
@@ -51,11 +50,13 @@ public class Ledger {
 
     private void displayAllEntries() {
         System.out.println("Displaying all the entries - newest first");
-        readFromCsv();
-        for (Transaction allTran1 : allTransactions) {
-            System.out.println("\nDate: " + allTran1.getDate() + "\nTime: "
-                    + allTran1.getTime() + "\nDescription: " + allTran1.getDescription()
-                    + "\nVendor: " + allTran1.getVendor() + "\nAmount: " + allTran1.getAmount()
+        ArrayList<Transaction> allTran1 = readFromCsv();
+
+
+        for (Transaction eachTran1 : allTran1) {
+            System.out.println("\nDate: " + eachTran1.getDate() + "\nTime: "
+                    + eachTran1.getTime() + "\nDescription: " + eachTran1.getDescription()
+                    + "\nVendor: " + eachTran1.getVendor() + "\nAmount: " + eachTran1.getAmount()
             );
         }
     }
@@ -63,14 +64,15 @@ public class Ledger {
     // BUG! - display deposits twice after displaying payments.
     private void displayDeposits() {
         System.out.println("Displaying only the deposits - newest first");
-        readFromCsv();
-        for (Transaction allTran2 : allTransactions) {
-            if (allTran2.getDescription().equalsIgnoreCase("Deposit")) {
-                System.out.println("Testing1");
-//                System.out.println("\nDate: " + allTran.getDate() + "\nTime: "
-//                        + allTran.getTime() + "\nDescription: " + allTran.getDescription()
-//                        + "\nVendor: " + allTran.getVendor() + "\nAmount: " + allTran.getAmount()
-//                );
+        ArrayList<Transaction> allTran2 = readFromCsv();
+
+        for (Transaction eachTran2 : allTran2) {
+            if (eachTran2.getDescription().equalsIgnoreCase("Deposit")) {
+                // System.out.println("Testing1");
+                System.out.println("\nDate: " + eachTran2.getDate() + "\nTime: "
+                        + eachTran2.getTime() + "\nDescription: " + eachTran2.getDescription()
+                        + "\nVendor: " + eachTran2.getVendor() + "\nAmount: " + eachTran2.getAmount()
+                );
             }
         }
     }
@@ -83,7 +85,8 @@ public class Ledger {
         System.out.println("display Reports");
     }
 
-    private void readFromCsv() {
+    private static ArrayList<Transaction> readFromCsv() {
+        ArrayList<Transaction> allTransactions = new ArrayList<>();
         try {
             FileReader fileReader = new FileReader("transactions.csv");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -113,5 +116,6 @@ public class Ledger {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return allTransactions;
     }
 }
