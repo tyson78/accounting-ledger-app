@@ -78,19 +78,83 @@ public class Reports {
                 );
             }
         }
-        // System.out.println("Displaying: getMonthToDate");
     }
 
     public void getPreviousMonth() {
         System.out.println("Displaying: getPreviousMonth");
+
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        var todayDate = LocalDateTime.now().format(formatter1);
+        // "2023-10-24" -> "2023-09"
+
+        // we can use String.substring(startIndex, endIndex) to get specific indexes
+        int currMonth = Integer.parseInt(todayDate.substring(5,7));
+
+        // we can use String.format to concatenate different data types
+        // prevMonth = "2023-" + "09" -> "2023-09"
+        String prevMonth = String.format("%s%02d", todayDate.substring(0,5),currMonth-1);
+
+        System.out.println("Prev Month is: " + prevMonth);
+
+        Ledger l1 = new Ledger();
+        ArrayList<Transaction> allTran6 = l1.readFromCsv();
+
+        for (Transaction eachT : allTran6) {
+            if (eachT.getDate().substring(0,7).equals(prevMonth)) {
+                System.out.println("\nDate: " + eachT.getDate() + "\nTime: "
+                        + eachT.getTime() + "\nDescription: " + eachT.getDescription()
+                        + "\nVendor: " + eachT.getVendor() + "\nAmount: " + eachT.getAmount()
+                );
+            }
+        }
     }
 
     public void getYearToDate() {
         System.out.println("Displaying: getYearToDate");
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        var todayDate = LocalDateTime.now().format(formatter1);
+        String curYear = todayDate.substring(0,4); // "2023-10-24" -> "2023"
+
+        Ledger l1 = new Ledger();
+        ArrayList<Transaction> allTran5 = l1.readFromCsv();
+
+        for (Transaction eachT : allTran5) {
+            if (eachT.getDate().substring(0,4).equals(curYear)) {
+                System.out.println("\nDate: " + eachT.getDate() + "\nTime: "
+                        + eachT.getTime() + "\nDescription: " + eachT.getDescription()
+                        + "\nVendor: " + eachT.getVendor() + "\nAmount: " + eachT.getAmount()
+                );
+            }
+        }
     }
 
     public void getPreviousYear() {
         System.out.println("Displaying: getPreviousYear");
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        var todayDate = LocalDateTime.now().format(formatter1);
+
+        // "2023-10-24" -> 2023
+        // we can use String.substring(startIndex, endIndex) to get specific indexes
+        // Integer.parseInt parses the decimal digits in the string
+        int currYear = Integer.parseInt(todayDate.substring(0,4));
+
+        // we can use String.format to concatenate different data types
+        // prevYear = "2023" + "-10-24" -> "2023-09"
+        String prevYear = String.format("%04d", currYear-1);
+
+        System.out.println("Prev Year is: " + prevYear);
+
+        Ledger l1 = new Ledger();
+        ArrayList<Transaction> allTran6 = l1.readFromCsv();
+
+        for (Transaction eachT : allTran6) {
+            if (eachT.getDate().substring(0,4).equals(prevYear)) {
+                System.out.println("\nDate: " + eachT.getDate() + "\nTime: "
+                        + eachT.getTime() + "\nDescription: " + eachT.getDescription()
+                        + "\nVendor: " + eachT.getVendor() + "\nAmount: " + eachT.getAmount()
+                );
+            }
+        }
     }
 
     public void getSearchByVendor() {
