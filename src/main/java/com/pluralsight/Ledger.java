@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Ledger {
@@ -47,7 +46,7 @@ public class Ledger {
         }
     }
 
-    private void displayAllEntries() {
+    public void displayAllEntries() {
         System.out.println("Displaying all the entries - newest first");
         ArrayList<Transaction> allTran1 = readFromCsv();
 
@@ -60,7 +59,7 @@ public class Ledger {
         }
     }
 
-    private void displayDeposits() {
+    public void displayDeposits() {
         System.out.println("Displaying only the deposits - newest first");
         ArrayList<Transaction> allTran2 = readFromCsv();
 
@@ -76,7 +75,7 @@ public class Ledger {
         }
     }
 
-    private void displayPayments() {
+    public void displayPayments() {
         System.out.println("displaying Payments - newest first");
         ArrayList<Transaction> allTran3 = readFromCsv();
 
@@ -92,13 +91,13 @@ public class Ledger {
         }
     }
 
-    private void displayReports() {
+    public void displayReports() {
         // System.out.println("Testing displayReports()");
         Reports r = new Reports();
         r.displayReportsScreen();
     }
 
-    private ArrayList<Transaction> readFromCsv() {
+    public ArrayList<Transaction> readFromCsv() {
         ArrayList<Transaction> allTransactions = new ArrayList<>();
         try {
             FileReader fileReader = new FileReader("transactions.csv");

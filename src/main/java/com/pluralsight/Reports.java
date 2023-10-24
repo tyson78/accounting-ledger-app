@@ -1,6 +1,11 @@
 package com.pluralsight;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Reports {
@@ -58,9 +63,22 @@ public class Reports {
     }
 
     public void getMonthToDate() {
-//        Ledger l1 = new Ledger();
-//        ArrayList<Transaction> allTran5 = l1
-        System.out.println("Displaying: getMonthToDate");
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        var todayDate = LocalDateTime.now().format(formatter1);
+        String curMonth = todayDate.substring(0,7); // "2023-10-24" -> "2023-10"
+
+        Ledger l1 = new Ledger();
+        ArrayList<Transaction> allTran5 = l1.readFromCsv();
+
+        for (Transaction eachT : allTran5) {
+            if (eachT.getDate().substring(0,7).equals(curMonth)) {
+                System.out.println("\nDate: " + eachT.getDate() + "\nTime: "
+                        + eachT.getTime() + "\nDescription: " + eachT.getDescription()
+                        + "\nVendor: " + eachT.getVendor() + "\nAmount: " + eachT.getAmount()
+                );
+            }
+        }
+        // System.out.println("Displaying: getMonthToDate");
     }
 
     public void getPreviousMonth() {
