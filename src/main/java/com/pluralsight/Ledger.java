@@ -65,7 +65,8 @@ public class Ledger {
         ArrayList<Transaction> allTran2 = readFromCsv();
 
         for (Transaction eachTran2 : allTran2) {
-            if (eachTran2.getDescription().equalsIgnoreCase("Deposit")) {
+            String s1 = String.valueOf(eachTran2.getAmount());
+            if (!s1.contains("-")) {
                 // System.out.println("Testing1");
                 System.out.println("\nDate: " + eachTran2.getDate() + "\nTime: "
                         + eachTran2.getTime() + "\nDescription: " + eachTran2.getDescription()
@@ -80,7 +81,8 @@ public class Ledger {
         ArrayList<Transaction> allTran3 = readFromCsv();
 
         for (Transaction eachTran3 : allTran3) {
-            if (eachTran3.getDescription().contains("paid".toLowerCase())) {
+            String s3 = String.valueOf(eachTran3.getAmount());
+            if (s3.contains("-")) {
                 // System.out.println("Testing displayPayments()");
                 System.out.println("\nDate: " + eachTran3.getDate() + "\nTime: "
                         + eachTran3.getTime() + "\nDescription: " + eachTran3.getDescription()
@@ -96,7 +98,7 @@ public class Ledger {
         r.displayReportsScreen();
     }
 
-    private static ArrayList<Transaction> readFromCsv() {
+    private ArrayList<Transaction> readFromCsv() {
         ArrayList<Transaction> allTransactions = new ArrayList<>();
         try {
             FileReader fileReader = new FileReader("transactions.csv");

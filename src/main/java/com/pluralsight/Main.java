@@ -51,7 +51,7 @@ public class Main {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         var date = LocalDateTime.now().format(formatter);
 
-        formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+        formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
         var time = LocalDateTime.now().format(formatter);
 
         var description = "Deposit";
@@ -76,12 +76,15 @@ public class Main {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         var date = LocalDateTime.now().format(formatter);
 
-        formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+        formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
         var time = LocalDateTime.now().format(formatter);
 
         var description = paymentDescription;
         var vendor = paymentVendor;
-        var amount = paymentAmount;
+        // var amount = paymentAmount;
+
+        String amount1 = String.format("-%.2f", paymentAmount);
+        Double amount = Double.valueOf(amount1);
 
         Transaction t = new Transaction(date, time, description, vendor, amount);
         writeToCsv(t);
