@@ -16,12 +16,15 @@ public class Main {
     public static void displayHomeScreen() {
         boolean done = false;
         while (!done) {
-            System.out.println("Select the Transaction type you want to perform by typing one of the letters below: \n"
-                    + "D) Add Deposit\n"
-                    + "P) Make Payment\n"
-                    + "L) Ledger\n"
-                    + "X) Exit\n"
-            );
+            System.out.printf("\n%20s\n%20s\n", "HOME MENU", "---------");
+            System.out.printf("""
+               D) Add Deposit
+               P) Make Payment
+               L) Ledger
+               X) Exit\n
+            """);
+
+            System.out.println("Select the Transaction type by typing one of the letters: ");
             String input = scanner.nextLine().trim();
 
             switch (input) {

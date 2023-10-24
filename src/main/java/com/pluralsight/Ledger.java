@@ -13,13 +13,15 @@ public class Ledger {
 
         boolean done = false;
         while (!done) {
-            System.out.println("\nSelect the operation type you want to perform by typing one of the letters below: \n"
-                    + "A) All\n"
-                    + "D) Deposits\n"
-                    + "P) Payments\n"
-                    + "R) Reports\n"
-                    + "H) Home\n"
-            );
+            System.out.printf("\n%20s\n%20s\n", "LEDGER MENU", "------------");
+            System.out.printf("""
+                    A) All
+                    D) Deposits
+                    P) Payments
+                    R) Reports
+                    H) Home\n
+            """);
+            System.out.println("Select the operation type you want to perform by typing one of the letters below: \n");
             String input = scanner.nextLine().trim();
 
             switch (input) {
@@ -33,9 +35,11 @@ public class Ledger {
                     displayPayments();
                     break;
                 case "R", "r":
-                    displayReports();
-                    // Reports class
-                    break;
+                    Reports r = new Reports();
+                    r.displayReportsScreen();
+                    if (r.backToHomeScreen() == true) {
+                        break;
+                    };
                 case "H", "h":
                     System.out.println("Welcome back to home page");
                     done = true;
@@ -91,11 +95,11 @@ public class Ledger {
         }
     }
 
-    public void displayReports() {
-        // System.out.println("Testing displayReports()");
-        Reports r = new Reports();
-        r.displayReportsScreen();
-    }
+//    public void displayReports() {
+//        // System.out.println("Testing displayReports()");
+//        Reports r = new Reports();
+//        r.displayReportsScreen(done);
+//    }
 
     public ArrayList<Transaction> readFromCsv() {
         ArrayList<Transaction> allTransactions = new ArrayList<>();

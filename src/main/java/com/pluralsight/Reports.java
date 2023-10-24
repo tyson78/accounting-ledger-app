@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -13,6 +14,8 @@ public class Reports {
         Scanner scanner = new Scanner(System.in);
         try {
             boolean done1 = false;
+            // done1 = false;
+
             while (!done1) {
 
                 System.out.printf("\n%20s\n%20s\n", "REPORTS MENU", "------------");
@@ -23,7 +26,7 @@ public class Reports {
                         3)  Year to Date,
                         4)  Previous Year,
                         5)  Search by Payer/Payee,
-                        0)  Back to Ledger Menu\n
+                        0)  Back to HOME Menu\n
                 """); // 6)  Custom Search
                 System.out.println("Select an option by typing the number: ");
                 int inputNum = scanner.nextInt();
@@ -50,8 +53,10 @@ public class Reports {
                         getSearchByVendor();
                         break;
                     case 0:
-                        System.out.println("Displaying: Back to Ledger Menu");
+                        // BUG!!!! on 10/24/2023
+                        System.out.println("Displaying: Back to Home Menu");
                         done1 = true;
+                        backToHomeScreen();
                         break;
                     default:
                         System.out.println("Displaying: Default Message - please select again");
@@ -159,6 +164,29 @@ public class Reports {
 
     public void getSearchByVendor() {
         System.out.println("Displaying: getSearchByVendor");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Please enter the Payer/Payee name");
+        String input = scanner.nextLine().trim();
+
+        System.out.println(input);
+
+        Ledger l1 = new Ledger();
+        ArrayList<Transaction> allTran6 = l1.readFromCsv();
+
+        for (Transaction eachT : allTran6) {
+            if (eachT.getVendor().equalsIgnoreCase(input)) {
+            // if (eachT.getVendor().contains(input)) {
+                System.out.println("\nDate: " + eachT.getDate() + "\nTime: "
+                        + eachT.getTime() + "\nDescription: " + eachT.getDescription()
+                        + "\nVendor: " + eachT.getVendor() + "\nAmount: " + eachT.getAmount()
+                );
+            }
+        }
+    }
+
+    public boolean backToHomeScreen() {
+        return true;
     }
 
 }
