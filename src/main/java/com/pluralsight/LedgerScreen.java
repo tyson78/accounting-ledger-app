@@ -2,12 +2,11 @@ package com.pluralsight;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class Ledger {
+public class LedgerScreen {
 
     public void displayLedgerScreen () {
         Scanner scanner = new Scanner(System.in);
@@ -43,7 +42,7 @@ public class Ledger {
                     done = true;
                     break;
                 default:
-                    System.out.println("Ledger: Invalid input. Please select again.\n");
+                    System.out.println("LedgerScreen: Invalid input. Please select again.\n");
             }
         }
     }
@@ -94,7 +93,7 @@ public class Ledger {
     }
 
     public void displayReports() {
-        Reports r = new Reports();
+        ReportsScreen r = new ReportsScreen();
         r.displayReportsScreen();
     }
 

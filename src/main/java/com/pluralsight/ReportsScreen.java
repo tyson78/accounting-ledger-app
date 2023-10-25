@@ -1,15 +1,11 @@
 package com.pluralsight;
 
-import java.sql.SQLOutput;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
 
-public class Reports {
+public class ReportsScreen {
     public void displayReportsScreen() {
         Scanner scanner = new Scanner(System.in);
         try {
@@ -24,7 +20,7 @@ public class Reports {
                         3)  Year to Date
                         4)  Previous Year
                         5)  Search by Payer/Payee
-                        0)  Back to Ledger Menu\n
+                        0)  Back to LedgerScreen Menu\n
                 """); // 6)  Custom Search
                 System.out.println("Select an option by typing the number: ");
                 int inputNum = scanner.nextInt();
@@ -51,7 +47,7 @@ public class Reports {
                         getSearchByVendor();
                         break;
                     case 0:
-                        System.out.println("Displaying: Back to Ledger Menu");
+                        System.out.println("Displaying: Back to LedgerScreen Menu");
                         done1 = true;
                         break;
                     default:
@@ -68,7 +64,7 @@ public class Reports {
         var todayDate = LocalDateTime.now().format(formatter1);
         String curMonth = todayDate.substring(0,7); // "2023-10-24" -> "2023-10"
 
-        Ledger l1 = new Ledger();
+        LedgerScreen l1 = new LedgerScreen();
         ArrayList<Transaction> allTran5 = l1.readFromCsv();
 
         for (Transaction eachT : allTran5) {
@@ -97,7 +93,7 @@ public class Reports {
 
         System.out.println("Prev Month is: " + prevMonth);
 
-        Ledger l1 = new Ledger();
+        LedgerScreen l1 = new LedgerScreen();
         ArrayList<Transaction> allTran6 = l1.readFromCsv();
 
         for (Transaction eachT : allTran6) {
@@ -116,7 +112,7 @@ public class Reports {
         var todayDate = LocalDateTime.now().format(formatter1);
         String curYear = todayDate.substring(0,4); // "2023-10-24" -> "2023"
 
-        Ledger l1 = new Ledger();
+        LedgerScreen l1 = new LedgerScreen();
         ArrayList<Transaction> allTran5 = l1.readFromCsv();
 
         for (Transaction eachT : allTran5) {
@@ -145,7 +141,7 @@ public class Reports {
 
         System.out.println("Prev Year is: " + prevYear);
 
-        Ledger l1 = new Ledger();
+        LedgerScreen l1 = new LedgerScreen();
         ArrayList<Transaction> allTran6 = l1.readFromCsv();
 
         for (Transaction eachT : allTran6) {
@@ -167,7 +163,7 @@ public class Reports {
 
         System.out.println(input);
 
-        Ledger l1 = new Ledger();
+        LedgerScreen l1 = new LedgerScreen();
         ArrayList<Transaction> allTran6 = l1.readFromCsv();
 
         for (Transaction eachT : allTran6) {

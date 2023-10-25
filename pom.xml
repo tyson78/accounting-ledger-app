@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.pluralsight</groupId>
-    <artifactId>accounting-ledger-app</artifactId>
+    <artifactId>accounting-ledgerScreen-app</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

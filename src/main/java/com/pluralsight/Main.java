@@ -1,7 +1,9 @@
 package com.pluralsight;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
@@ -47,23 +49,55 @@ public class Main {
         }
     }
 
+    // There is a bug here
     private static void addDeposit() {
-        System.out.println("How much would you like to deposit?\n");
-        Double depositAmount = scanner.nextDouble();
-        scanner.nextLine();
+        try {
+            System.out.println("How much would you like to deposit?\n");
+            Double depositAmount = scanner.nextDouble();
+            scanner.nextLine();
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        var date = LocalDateTime.now().format(formatter);
+            System.out.println("Which account would you like to deposit to?");
+            String vendorName = scanner.nextLine().trim();
 
-        formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
-        var time = LocalDateTime.now().format(formatter);
+            LocalDate localDate = readDateFromCLI();
+            LocalTime localTime = readTimeFromCLI();
 
-        var description = "Deposit";
-        var vendor = "Bank";
-        var amount = depositAmount;
+            String date = String.valueOf(localDate);
+            String time = String.valueOf(localDate);
 
-        Transaction t = new Transaction(date, time, description, vendor, amount);
-        writeToCsv(t);
+            var description = "Deposit";
+            var vendor = vendorName;
+            var amount = depositAmount;
+
+            Transaction t = new Transaction(date, time, description, vendor, amount);
+            writeToCsv(t);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static LocalDate readDateFromCLI() {
+        LocalDate dt = null;
+        boolean badInput;
+        do {
+            badInput = false;
+            try {
+                System.out.println("Please enter the date of deposit in this format: yyyy-mm-dd");
+                String depositDate = scanner.nextLine();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                dt = LocalDate.parse(depositDate, formatter);
+            } catch (Exception e) {
+                badInput = true;
+            }
+        } while (badInput);
+        return dt;
+    }
+
+    private static LocalTime readTimeFromCLI() {
+        System.out.println("Please enter the time of deposit in this format: hh:mm:ss");
+        String depositTime = scanner.nextLine(); // .split("-") 4 2 2
+        // DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("hh:mm:ss");
+        return null;
     }
 
     private static void makePayment() {
@@ -94,7 +128,6 @@ public class Main {
         writeToCsv(t);
     }
 
-    // BUG?
     private static void writeToCsv(Transaction t) {
         try {
             FileWriter fileWriter = new FileWriter("transactions.csv", true);
@@ -110,7 +143,7 @@ public class Main {
     }
 
     private static void promptLedgerScreen() {
-        Ledger ledger = new Ledger();
-        ledger.displayLedgerScreen();
+        LedgerScreen ledgerScreen = new LedgerScreen();
+        ledgerScreen.displayLedgerScreen();
     }
 }
