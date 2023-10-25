@@ -2,9 +2,10 @@ package com.pluralsight;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class Ledger {
 
@@ -35,11 +36,8 @@ public class Ledger {
                     displayPayments();
                     break;
                 case "R", "r":
-                    Reports r = new Reports();
-                    r.displayReportsScreen();
-                    if (r.backToHomeScreen() == true) {
-                        break;
-                    };
+                    displayReports();
+                    break;
                 case "H", "h":
                     System.out.println("Welcome back to home page");
                     done = true;
@@ -95,12 +93,12 @@ public class Ledger {
         }
     }
 
-//    public void displayReports() {
-//        // System.out.println("Testing displayReports()");
-//        Reports r = new Reports();
-//        r.displayReportsScreen(done);
-//    }
+    public void displayReports() {
+        Reports r = new Reports();
+        r.displayReportsScreen();
+    }
 
+    // BUG !!
     public ArrayList<Transaction> readFromCsv() {
         ArrayList<Transaction> allTransactions = new ArrayList<>();
         try {
@@ -126,7 +124,8 @@ public class Ledger {
                 Transaction t = new Transaction(tDate, tTime, tDescription, tVendor, tAmount);
                 allTransactions.add(t);
             }
-            Collections.reverse(allTransactions); // reverses a list
+            // Collections.reverse(allTransactions);
+            sortLedger(allTransactions);
             System.out.println(); // to make a line space
             bufferedReader.close();
         } catch (Exception e) {
@@ -134,4 +133,19 @@ public class Ledger {
         }
         return allTransactions;
     }
+
+    public void sortLedger (ArrayList<Transaction> allTransactions1) {
+
+        Collections.sort(allTransactions1, new Comparator<Transaction>() {
+            @Override
+            public int compare(Transaction o1, Transaction o2) {
+                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+                LocalDateTime date1 = LocalDateTime.parse(o1.getDate()+"T"+o1.getTime());
+                LocalDateTime date2 = LocalDateTime.parse(o2.getDate()+"T"+o2.getTime());
+                return date2.compareTo(date1);
+            }
+        });
+    }
+
 }

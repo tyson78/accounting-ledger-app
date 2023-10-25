@@ -50,6 +50,7 @@ public class Main {
     private static void addDeposit() {
         System.out.println("How much would you like to deposit?\n");
         Double depositAmount = scanner.nextDouble();
+        scanner.nextLine();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         var date = LocalDateTime.now().format(formatter);
@@ -93,6 +94,7 @@ public class Main {
         writeToCsv(t);
     }
 
+    // BUG?
     private static void writeToCsv(Transaction t) {
         try {
             FileWriter fileWriter = new FileWriter("transactions.csv", true);

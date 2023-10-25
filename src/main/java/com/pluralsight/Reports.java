@@ -14,19 +14,17 @@ public class Reports {
         Scanner scanner = new Scanner(System.in);
         try {
             boolean done1 = false;
-            // done1 = false;
-
             while (!done1) {
 
                 System.out.printf("\n%20s\n%20s\n", "REPORTS MENU", "------------");
 
                 System.out.printf("""
-                        1)  Month to Date,
-                        2)  Previous Month,
-                        3)  Year to Date,
-                        4)  Previous Year,
-                        5)  Search by Payer/Payee,
-                        0)  Back to HOME Menu\n
+                        1)  Month to Date
+                        2)  Previous Month
+                        3)  Year to Date
+                        4)  Previous Year
+                        5)  Search by Payer/Payee
+                        0)  Back to Ledger Menu\n
                 """); // 6)  Custom Search
                 System.out.println("Select an option by typing the number: ");
                 int inputNum = scanner.nextInt();
@@ -53,13 +51,11 @@ public class Reports {
                         getSearchByVendor();
                         break;
                     case 0:
-                        // BUG!!!! on 10/24/2023
-                        System.out.println("Displaying: Back to Home Menu");
+                        System.out.println("Displaying: Back to Ledger Menu");
                         done1 = true;
-                        backToHomeScreen();
                         break;
                     default:
-                        System.out.println("Displaying: Default Message - please select again");
+                        System.out.println("Displaying: Default Message - please select again\n");
                 }
             }
         } catch (Exception e) {
@@ -183,10 +179,6 @@ public class Reports {
                 );
             }
         }
-    }
-
-    public boolean backToHomeScreen() {
-        return true;
     }
 
 }
