@@ -10,19 +10,19 @@ import java.util.*;
 
 public class LedgerScreen {
 
-    public void displayLedgerScreen () {
+    public void displayLedgerScreen() {
         Scanner scanner = new Scanner(System.in);
 
         boolean done = false;
         while (!done) {
             System.out.printf("\n%20s\n%20s\n", "LEDGER MENU", "------------");
             System.out.printf("""
-                    A) All
-                    D) Deposits
-                    P) Payments
-                    R) Reports
-                    H) Home\n
-            """);
+                            A) All
+                            D) Deposits
+                            P) Payments
+                            R) Reports
+                            H) Home\n
+                    """);
             System.out.println("Select the operation type you want to perform by typing one of the letters below: \n");
             String input = scanner.nextLine().trim();
 
@@ -135,7 +135,7 @@ public class LedgerScreen {
         return allTransactions;
     }
 
-    public void sortLedger (ArrayList<Transaction> allTransactions1) {
+    public void sortLedger(ArrayList<Transaction> allTransactions1) {
 
         Collections.sort(allTransactions1, new Comparator<Transaction>() {
             @Override
