@@ -2,7 +2,9 @@ package com.pluralsight;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -140,8 +142,18 @@ public class LedgerScreen {
             public int compare(Transaction o1, Transaction o2) {
                 DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-                LocalDateTime date1 = LocalDateTime.parse(o1.getDate()+"T"+o1.getTime());
-                LocalDateTime date2 = LocalDateTime.parse(o2.getDate()+"T"+o2.getTime());
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
+                var time = LocalTime.now().format(formatter);
+
+//                LocalDateTime date1 = LocalDateTime.parse(o1.getDate()+"T"+o1.getTime().formatted("hh:mm:ss"));
+//                LocalDateTime date2 = LocalDateTime.parse(o2.getDate()+"T"+o2.getTime().formatted(""));
+
+                LocalDate date1 = LocalDate.parse(o1.getDate());
+                LocalDate date2 = LocalDate.parse(o2.getDate());
+
+//                LocalTime time1 = LocalTime.parse(o1.getTime());
+//                LocalTime time2 = LocalTime.parse(o2.getTime());
+
                 return date2.compareTo(date1);
             }
         });
