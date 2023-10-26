@@ -30,18 +30,19 @@ The Accounting Ledger App is a Java command-line interface (CLI) application des
 - The ledger entries are automatically sorted by date in descending order, showing the newest transactions first, making it easy to stay up-to-date with your financial activities.
 
 ## User Command Line Interface (CLI)
-
 - **Home Screen**: 
-
-<img src="images/home.png" width="400" height="150">
+    
+    <img src="images/home.png" width="400" height="150">
 
 - **Ledger Screen**:
-
-<img src="images/ledger.png" width="600" height="150">
+    
+    <img src="images/ledger.png" width="600" height="150">
 
 - **Reports Screen**:
+  
+    <img src="images/reports.png" width="300" height="150">
 
-<img src="images/reports.png" width="300" height="150">
+
 
 
 
