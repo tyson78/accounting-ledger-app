@@ -61,12 +61,12 @@ public class HomeScreen {
 //            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 //            var date = LocalDateTime.now().format(formatter);
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
-            var time = LocalTime.now().format(formatter);
+            System.out.println("Please enter the TIME of deposit in this format: hh:mm:ss");
+            String depositTime = scanner.nextLine().trim();
 
             String date = String.valueOf(localDate);
-            // String time = String.valueOf(localTime);
 
+            var time = depositTime;
             var description = "Deposit";
             var vendor = vendorName;
             var amount = depositAmount;
@@ -84,7 +84,7 @@ public class HomeScreen {
         do {
             badInput = false;
             try {
-                System.out.println("Please enter the date of deposit in this format: yyyy-mm-dd");
+                System.out.println("Please enter the DATE of deposit in this format: yyyy-mm-dd");
                 String depositDate = scanner.nextLine();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 dt = LocalDate.parse(depositDate, formatter);
@@ -160,4 +160,3 @@ public class HomeScreen {
         ledgerScreen.displayLedgerScreen();
     }
 }
-

@@ -142,11 +142,11 @@ public class LedgerScreen {
             public int compare(Transaction o1, Transaction o2) {
                 DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
-                var time = LocalTime.now().format(formatter);
+//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
+//                var time = LocalTime.now().format(formatter);
 
-//                LocalDateTime date1 = LocalDateTime.parse(o1.getDate()+"T"+o1.getTime().formatted("hh:mm:ss"));
-//                LocalDateTime date2 = LocalDateTime.parse(o2.getDate()+"T"+o2.getTime().formatted(""));
+//                LocalDateTime date1 = LocalDateTime.parse(o1.getDate()+"T"+o1.getTime().format("hh:mm:ss"));
+//                LocalDateTime date2 = LocalDateTime.parse(o2.getDate()+"T"+o2.getTime().format("hh:mm:ss"));
 
                 LocalDate date1 = LocalDate.parse(o1.getDate());
                 LocalDate date2 = LocalDate.parse(o2.getDate());
