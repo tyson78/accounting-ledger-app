@@ -33,15 +33,15 @@ The Accounting Ledger App is a Java command-line interface (CLI) application des
 
 - **Home Screen**: 
 
-<img src="images/home.png" width="600" height="150">
+<img src="images/home.png" width="400" height="150">
 
 - **Ledger Screen**:
 
-<img src="images/ledger.png" width="1500" height="150">
+<img src="images/ledger.png" width="600" height="150">
 
 - **Reports Screen**:
 
-<img src="images/reports.png" width="250" height="150">
+<img src="images/reports.png" width="300" height="150">
 
 
 
