@@ -132,7 +132,6 @@ public class HomeScreen {
 
         var description = paymentDescription;
         var vendor = paymentVendor;
-        // var amount = paymentAmount;
 
         String amount1 = String.format("-%.2f", paymentAmount);
         Double amount = Double.valueOf(amount1);
