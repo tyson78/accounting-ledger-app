@@ -3,6 +3,11 @@
 
 The Accounting Ledger App is a Java command-line interface (CLI) application designed to help you efficiently manage and keep track of your financial transactions. It allows you to record deposits and payments, view a ledger of all your financial activities, and run various financial reports.
 
+## Built With
+- Java
+- Maven
+- IntelliJ
+
 ## Features
 
 - **Add Deposit**: Record and save deposit information, including the date, time, description, vendor, and amount.
