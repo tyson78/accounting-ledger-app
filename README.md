@@ -47,7 +47,9 @@ The Accounting Ledger App is a Java command-line interface (CLI) application des
   
     <img src="images/reports.png" width="300" height="150">
 
-
-
+## One Interesting Code
+- The sortLedger() method sorts all the entries from the transactions.csv file by date in descending order. Displaying the newest entries first.
+  
+    <img src="images/code.png" width="500" height="200">
 
 
