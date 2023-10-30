@@ -55,9 +55,8 @@ public class LedgerScreen {
 
 
         for (Transaction eachTran1 : allTran1) {
-            System.out.println("\nDate: " + eachTran1.getDate() + "\nTime: "
-                    + eachTran1.getTime() + "\nDescription: " + eachTran1.getDescription()
-                    + "\nVendor: " + eachTran1.getVendor() + "\nAmount: " + eachTran1.getAmount()
+            System.out.println(eachTran1.getDate() + "|" + eachTran1.getTime() + "|" + eachTran1.getDescription()
+                    + "|" + eachTran1.getVendor() + "|" + eachTran1.getAmount()
             );
         }
     }
@@ -70,10 +69,11 @@ public class LedgerScreen {
             String s1 = String.valueOf(eachTran2.getAmount());
             if (!s1.contains("-")) {
                 // System.out.println("Testing1");
-                System.out.println("\nDate: " + eachTran2.getDate() + "\nTime: "
-                        + eachTran2.getTime() + "\nDescription: " + eachTran2.getDescription()
-                        + "\nVendor: " + eachTran2.getVendor() + "\nAmount: " + eachTran2.getAmount()
-                );
+                for (Transaction eachTran1 : allTran2) {
+                    System.out.println(eachTran1.getDate() + "|" + eachTran1.getTime() + "|" + eachTran1.getDescription()
+                            + "|" + eachTran1.getVendor() + "|" + eachTran1.getAmount()
+                    );
+                }
             }
         }
     }
@@ -82,13 +82,12 @@ public class LedgerScreen {
         System.out.println("displaying Payments - newest first");
         ArrayList<Transaction> allTran3 = readFromCsv();
 
-        for (Transaction eachTran3 : allTran3) {
-            String s3 = String.valueOf(eachTran3.getAmount());
+        for (Transaction eachTran1 : allTran3) {
+            String s3 = String.valueOf(eachTran1.getAmount());
             if (s3.contains("-")) {
                 // System.out.println("Testing displayPayments()");
-                System.out.println("\nDate: " + eachTran3.getDate() + "\nTime: "
-                        + eachTran3.getTime() + "\nDescription: " + eachTran3.getDescription()
-                        + "\nVendor: " + eachTran3.getVendor() + "\nAmount: " + eachTran3.getAmount()
+                System.out.println(eachTran1.getDate() + "|" + eachTran1.getTime() + "|" + eachTran1.getDescription()
+                        + "|" + eachTran1.getVendor() + "|" + eachTran1.getAmount()
                 );
             }
         }
