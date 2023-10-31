@@ -69,9 +69,8 @@ public class ReportsScreen {
 
         for (Transaction eachT : allTran5) {
             if (eachT.getDate().substring(0, 7).equals(curMonth)) {
-                System.out.println("\nDate: " + eachT.getDate() + "\nTime: "
-                        + eachT.getTime() + "\nDescription: " + eachT.getDescription()
-                        + "\nVendor: " + eachT.getVendor() + "\nAmount: " + eachT.getAmount()
+                System.out.println(eachT.getDate() + "|" + eachT.getTime() + "|" + eachT.getDescription()
+                        + "|" + eachT.getVendor() + "|" + eachT.getAmount()
                 );
             }
         }
@@ -98,9 +97,8 @@ public class ReportsScreen {
 
         for (Transaction eachT : allTran6) {
             if (eachT.getDate().substring(0, 7).equals(prevMonth)) {
-                System.out.println("\nDate: " + eachT.getDate() + "\nTime: "
-                        + eachT.getTime() + "\nDescription: " + eachT.getDescription()
-                        + "\nVendor: " + eachT.getVendor() + "\nAmount: " + eachT.getAmount()
+                System.out.println(eachT.getDate() + "|" + eachT.getTime() + "|" + eachT.getDescription()
+                        + "|" + eachT.getVendor() + "|" + eachT.getAmount()
                 );
             }
         }
@@ -117,9 +115,8 @@ public class ReportsScreen {
 
         for (Transaction eachT : allTran5) {
             if (eachT.getDate().substring(0, 4).equals(curYear)) {
-                System.out.println("\nDate: " + eachT.getDate() + "\nTime: "
-                        + eachT.getTime() + "\nDescription: " + eachT.getDescription()
-                        + "\nVendor: " + eachT.getVendor() + "\nAmount: " + eachT.getAmount()
+                System.out.println(eachT.getDate() + "|" + eachT.getTime() + "|" + eachT.getDescription()
+                        + "|" + eachT.getVendor() + "|" + eachT.getAmount()
                 );
             }
         }
@@ -146,9 +143,8 @@ public class ReportsScreen {
 
         for (Transaction eachT : allTran6) {
             if (eachT.getDate().substring(0, 4).equals(prevYear)) {
-                System.out.println("\nDate: " + eachT.getDate() + "\nTime: "
-                        + eachT.getTime() + "\nDescription: " + eachT.getDescription()
-                        + "\nVendor: " + eachT.getVendor() + "\nAmount: " + eachT.getAmount()
+                System.out.println(eachT.getDate() + "|" + eachT.getTime() + "|" + eachT.getDescription()
+                        + "|" + eachT.getVendor() + "|" + eachT.getAmount()
                 );
             }
         }
@@ -169,9 +165,8 @@ public class ReportsScreen {
         for (Transaction eachT : allTran6) {
             if (eachT.getVendor().equalsIgnoreCase(input)) {
                 // if (eachT.getVendor().contains(input)) {
-                System.out.println("\nDate: " + eachT.getDate() + "\nTime: "
-                        + eachT.getTime() + "\nDescription: " + eachT.getDescription()
-                        + "\nVendor: " + eachT.getVendor() + "\nAmount: " + eachT.getAmount()
+                System.out.println(eachT.getDate() + "|" + eachT.getTime() + "|" + eachT.getDescription()
+                        + "|" + eachT.getVendor() + "|" + eachT.getAmount()
                 );
             }
         }

@@ -69,11 +69,9 @@ public class LedgerScreen {
             String s1 = String.valueOf(eachTran2.getAmount());
             if (!s1.contains("-")) {
                 // System.out.println("Testing1");
-                for (Transaction eachTran1 : allTran2) {
-                    System.out.println(eachTran1.getDate() + "|" + eachTran1.getTime() + "|" + eachTran1.getDescription()
-                            + "|" + eachTran1.getVendor() + "|" + eachTran1.getAmount()
+                    System.out.println(eachTran2.getDate() + "|" + eachTran2.getTime() + "|" + eachTran2.getDescription()
+                            + "|" + eachTran2.getVendor() + "|" + eachTran2.getAmount()
                     );
-                }
             }
         }
     }
