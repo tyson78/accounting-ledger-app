@@ -45,7 +45,6 @@ public class HomeScreen {
         }
     }
 
-    // There is a bug here
     private static void addDeposit() {
         try {
             System.out.println("How much would you like to deposit?\n");
@@ -56,10 +55,6 @@ public class HomeScreen {
             String vendorName = scanner.nextLine().trim();
 
             LocalDate localDate = readDateFromCLI();
-            // LocalTime localTime = readTimeFromCLI();
-
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//            var date = LocalDateTime.now().format(formatter);
 
             System.out.println("Please enter the TIME of deposit in this format: hh:mm:ss");
             String depositTime = scanner.nextLine().trim();
@@ -93,24 +88,6 @@ public class HomeScreen {
             }
         } while (badInput);
         return dt;
-    }
-
-    private static LocalTime readTimeFromCLI() {
-        LocalTime lt = null;
-        boolean badInput1;
-        do {
-            badInput1 = false;
-            try {
-                System.out.println("Please enter the TIME of deposit in this format: hh:mm:ss");
-                String depositTime = scanner.nextLine().trim();
-                DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("hh:mm:ss");
-                lt = LocalTime.parse(depositTime, formatter1);
-                // lt = LocalTime.parse(depositTime, formatter1);
-            } catch (Exception e) {
-                badInput1 = true;
-            }
-        } while (badInput1);
-        return lt;
     }
 
     private static void makePayment() {

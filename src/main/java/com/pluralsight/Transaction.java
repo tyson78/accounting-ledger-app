@@ -1,7 +1,5 @@
 package com.pluralsight;
 
-import java.time.LocalDateTime;
-
 public class Transaction {
     private String date;
     private String time;

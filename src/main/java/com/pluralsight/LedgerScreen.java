@@ -96,16 +96,12 @@ public class LedgerScreen {
         r.displayReportsScreen();
     }
 
-    // BUG !!
     public ArrayList<Transaction> readFromCsv() {
         ArrayList<Transaction> allTransactions = new ArrayList<>();
         try {
             FileReader fileReader = new FileReader("transactions.csv");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String input;
-
-            // arraylist = {"date|time|description|vendor|amount", ... , }
-            // goal arraylist = {date|time|description|vendor|amount, ... , }
 
             bufferedReader.readLine(); // reads the first line & moves on to the next line
 
@@ -122,7 +118,6 @@ public class LedgerScreen {
                 Transaction t = new Transaction(tDate, tTime, tDescription, tVendor, tAmount);
                 allTransactions.add(t);
             }
-            // Collections.reverse(allTransactions);
             sortLedger(allTransactions);
             System.out.println(); // to make a line space
             bufferedReader.close();
